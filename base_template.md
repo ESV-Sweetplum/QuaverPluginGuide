@@ -835,28 +835,33 @@ then placing/removing them with the according action function**.
 
 Remember:
 
-1. Create Object with `utils.Create___()`
-2. Place Object with `action.Place___()`
+1. Create an object with `utils.Create___()`
+2. Place an object with `actions.Place___()`
 
 - [Object](#quaver-structures)
     - [Utility](#utilities) function
-    - [Action](#editor-actions) function
+    - [Actions](#editor-actions) function
     - [ActionBatch](#editor-actions) function
 
 - HitObject
-    - `utils.CreateHitObject()`
-    - `action.PlaceHitObject(obj)`
-    - `action.PlaceHitObjectBatch(table)`
+    - `utils.CreateHitObject(startTime, lane, ...)`
+    - `actions.PlaceHitObject(obj)`
+    - `actions.PlaceHitObjectBatch(table)`
 
 - ScrollVelocity
-    - `utils.CreateScrollVelocity()`
-    - `action.PlaceScrollVelocity(obj)`
-    - `action.PlaceScrollVelocityBatch(table)`
+    - `utils.CreateScrollVelocity(startTime, multiplier)`
+    - `actions.PlaceScrollVelocity(obj)`
+    - `actions.PlaceScrollVelocityBatch(table)`
 
 - TimingPoint
-    - `utils.CreateTimingPoint()`
-    - `action.PlaceTimingPoint(obj)`
-    - `action.PlaceTimingPointBatch(table)`
+    - `utils.CreateTimingPoint(startTime, Bpm, ...)`
+    - `actions.PlaceTimingPoint(obj)`
+    - `actions.PlaceTimingPointBatch(table)`
+
+- Bookmark
+    - `utils.CreateBookmark(startTime, note)`
+    - `actions.AddBookmark(obj)`
+    - `actions.AddBookmarkBatch(table)`
 
 ### Place a single object
 
@@ -866,7 +871,7 @@ Remember:
 -- Place a note at the current editor position in lane 1
 -- You would place a long note by specifiying an end time, refer to
 -- section Utilities
-obj = utils.CreateHitObject(1, state.SongTime)
+obj = utils.CreateHitObject(state.SongTime, 1)
 actions.PlaceHitObject(obj)
 
 -- This is an example for a single SV point.
